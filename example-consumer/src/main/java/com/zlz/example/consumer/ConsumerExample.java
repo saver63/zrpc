@@ -20,19 +20,24 @@ public class ConsumerExample {
 
     public static void main(String[] args) {
 
-        //测试配置文件读取
-//        RpcConfig rpc = ConfigUtils.loadConfig(RpcConfig.class,"rpc");
-//        System.out.println(rpc);
+        //获取代理
+        UserService userService = ServiceProxyFactory.getProxy(UserService.class);
+        User user = new User();
+        user.setName("zlz");
 
-        //加载YAML文件尾Map
-        Map<String ,Object> yamlMap = YamlUtil.loadByPath("application.yaml");
-        JSONObject jsonObject = JSONUtil.parseObj(yamlMap);
+        //调用
+        User newUser = userService.getUser(user);
+        if (newUser != null){
+            System.out.println(newUser.getName());
+        }else {
+            System.out.println("user == null");
+        }
 
-        //现在可以基于yamlMap进行操作或将其转换为特定对象
-        System.out.println(jsonObject);
+        long number = userService.getNumber();
+        System.out.println(number);
 
-        RpcConfig bean = JSONUtil.toBean(jsonObject.getJSONObject("rpc"),RpcConfig.class);
+        String userName = userService.getName();
+        System.out.println(userName);
 
-        System.out.println(bean);
     }
 }

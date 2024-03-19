@@ -1,16 +1,5 @@
 
-]	java:S125"<This block of commented-out lines of code should be removed.(™£‚üÿÿÿÿ8§öÀ°å1
-L	java:S106 "+Replace this use of System.out by a logger.(©¬èùÿÿÿÿ8‘Á°å1
-L	java:S106$"+Replace this use of System.out by a logger.(Ö¦û–ÿÿÿÿÿ8‘Á°å1
-b
-java:S1128"ERemove this unused import 'cn.hutool.core.text.replacer.StrReplacer'.(ŞÈÁö8üı¼°å1
-L
-java:S1128"0Remove this unused import 'cn.hutool.json.JSON'.(ÿ!8üı¼°å1
-`
-java:S1128">Remove this unused import 'com.zlz.example.common.model.User'.(­«Ÿûÿÿÿÿ8üı¼°å1
-d
-java:S1128	"GRemove this unused import 'com.zlz.example.common.service.UserService'.(È¼¸§8üı¼°å1
-`
-java:S1128"CRemove this unused import 'com.zlz.zrpc.proxy.ServiceProxyFactory'.(ª¾Îï8üı¼°å1
-]
-java:S1128";Remove this unused import 'com.zlz.zrpc.utils.ConfigUtils'.(İÍ™‚şÿÿÿÿ8¨öÀ°å1
+L	java:S106"+Replace this use of System.out by a logger.(õÃß×ıÿÿÿÿ8å±ø¶å1
+G	java:S106!"+Replace this use of System.out by a logger.(“ş¶÷8å±ø¶å1
+L	java:S106%"+Replace this use of System.out by a logger.(·ùßóıÿÿÿÿ8æ±ø¶å1
+G	java:S106("+Replace this use of System.out by a logger.(äÎ¬8¨ù¶å1
