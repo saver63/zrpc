@@ -10,7 +10,7 @@
   <dependencies>
     <dependency>
       <groupId>com.zlz</groupId>
-      <artifactId>zlz-rpc-easy</artifactId>
+      <artifactId>zlz-rpc-core</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
