@@ -39,9 +39,6 @@ Lexample-provider/src/main/java/com/zlz/example/provider/UserServiceImpl.java,b
 zlz-rpc-easy.iml,0\f\0f75a286d5e15a4833349a5e96991e74932a1199
 D
 zlz-rpc-core/pom.xml,e\2\e2094a6b367e404c5b583e4fbe8a73b0f74d908c
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 m
 =zlz-rpc-core/src/main/java/com/zlz/zrpc/config/RpcConfig.java,3\7\37a49e50429fe7edf00ca9a7b6b74fdd98dc3ae6
 n
@@ -54,3 +51,7 @@ k
 Lexample-consumer/src/main/java/com/zlz/example/consumer/ConsumerExample.java,b\9\b974fef228d60d1d0e4c8e7884f692bd2cd8a09d
 |
 Lexample-provider/src/main/java/com/zlz/example/provider/ProviderExample.java,3\1\316498bdc653d2cebb003dfe6b2af309999c8f6c
+s
+Czlz-rpc-core/src/main/java/com/zlz/zrpc/proxy/MockServiceProxy.java,5\f\5f61351ad1329d801f71401a774ba8c50eeb3e45
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

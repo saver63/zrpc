@@ -1,5 +1,17 @@
 
 W
-java:S1118	":Add a private constructor to hide the implicit public one.( ¡©“8Š¬Û¤å1
+java:S1118":Add a private constructor to hide the implicit public one.( ¡©“8¶±å1
+L	java:S106/"+Replace this use of System.out by a logger.(Ö¦û–ÿÿÿÿÿ8 ¶±å1
+K
+java:S19050")Remove this unnecessary cast to "Object".(ÿ¹Ü£ùÿÿÿÿ8 ¶±å1
+q
+java:S32524"OUse static access with "cn.hutool.core.text.CharSequenceUtil" for "isNotBlank".(îã’Úøÿÿÿÿ8¡¶±å1
+F	java:S1067"+Replace this use of System.out by a logger.(åìÙW8¢¶±å1
+[
+java:S1172="9Remove these unused method parameters "tClass", "prefix".(ğÔ­áùÿÿÿÿ8£¶±å1
 l
-java:S3252""OUse static access with "cn.hutool.core.text.CharSequenceUtil" for "isNotBlank".(ª´±…8¬Û¤å1
+java:S3252>"OUse static access with "cn.hutool.core.text.CharSequenceUtil" for "isNotBlank".(Ì·³‹8£¶±å1
+G	java:S106A"+Replace this use of System.out by a logger.(‹ğ³æ8¤¶±å1
+L	java:S106E"+Replace this use of System.out by a logger.(¼×Î˜úÿÿÿÿ8¤¶±å1
+K
+java:S1128".Remove this unused import 'java.util.Objects'.(¼¸õ›8¤¶±å1
