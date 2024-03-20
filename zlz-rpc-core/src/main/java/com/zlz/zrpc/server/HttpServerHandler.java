@@ -1,17 +1,16 @@
 package com.zlz.zrpc.server;
 
+import com.zlz.zrpc.RpcApplication;
 import com.zlz.zrpc.model.RpcRequest;
 import com.zlz.zrpc.model.RpcResponse;
 import com.zlz.zrpc.registry.LocalRegistry;
-import com.zlz.zrpc.serializer.JdkSerializer;
 import com.zlz.zrpc.serializer.Serializer;
+import com.zlz.zrpc.serializer.SerializerFactory;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
 
-
-import javax.xml.ws.handler.MessageContext;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
@@ -23,7 +22,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     public void handle(HttpServerRequest request) {
 
         //指定序列化器
-        final Serializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         //记录日志
         System.out.println("Received request: "+request.method()+" "+request.uri());

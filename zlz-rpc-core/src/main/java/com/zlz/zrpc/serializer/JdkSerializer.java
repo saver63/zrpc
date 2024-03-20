@@ -2,6 +2,9 @@ package com.zlz.zrpc.serializer;
 
 import java.io.*;
 
+/**
+ * Java默认的序列化器
+ */
 public class JdkSerializer implements Serializer{
 
 

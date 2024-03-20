@@ -7,7 +7,7 @@ import com.zlz.zrpc.server.HttpServer;
 import com.zlz.zrpc.server.VertxHttpServer;
 
 /**
- * 简易服务提供者示例
+ * 服务提供者示例
  */
 public class ProviderExample {
 

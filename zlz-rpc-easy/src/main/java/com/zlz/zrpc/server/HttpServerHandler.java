@@ -10,8 +10,6 @@ import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
 
-
-import javax.xml.ws.handler.MessageContext;
 import java.io.IOException;
 import java.lang.reflect.Method;
 

@@ -1,6 +1,5 @@
 package com.zlz.zrpc.model;
 
-import com.zlz.zrpc.serializer.Serializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

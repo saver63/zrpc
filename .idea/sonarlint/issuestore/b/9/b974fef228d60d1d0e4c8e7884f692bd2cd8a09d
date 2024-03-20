@@ -1,5 +1,4 @@
 
-L	java:S106"+Replace this use of System.out by a logger.(õÃß×ıÿÿÿÿ8å±ø¶å1
-G	java:S106!"+Replace this use of System.out by a logger.(“ş¶÷8å±ø¶å1
-L	java:S106%"+Replace this use of System.out by a logger.(·ùßóıÿÿÿÿ8æ±ø¶å1
-G	java:S106("+Replace this use of System.out by a logger.(äÎ¬8¨ù¶å1
+L	java:S106"+Replace this use of System.out by a logger.(õÃß×ıÿÿÿÿ8å±ø¶å1
+G	java:S106"+Replace this use of System.out by a logger.(“ş¶÷8å±ø¶å1
+G	java:S106"+Replace this use of System.out by a logger.(äÎ¬8¹¸²Ïå1

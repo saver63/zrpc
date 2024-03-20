@@ -2,7 +2,6 @@ package com.zlz.example.consumer;
 
 import com.zlz.example.common.model.User;
 import com.zlz.example.common.service.UserService;
-import com.zlz.zrpc.proxy.ServiceProxy;
 import com.zlz.zrpc.proxy.ServiceProxyFactory;
 
 /**
