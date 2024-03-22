@@ -1,0 +1,14 @@
+
+b	java:S112t"FDefine and throw a dedicated exception instead of using a generic one.(­Ô„¢8¿Ê”¡æ1
+h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(‰¡æşÿÿÿÿ8¿Ê”¡æ1
+K
+java:S1604‹"(Make this anonymous inner class a lambda(œ¥Ô½ùÿÿÿÿ8ÀÊ”¡æ1
+]
+java:S1075%"ARefactor your code to get this URI from a customizable parameter.(ö“ìk8ÔÊ”¡æ1
+{
+java:S2142s"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8ÙÊ”¡æ1
+F	java:S106~"+Replace this use of System.out by a logger.(’ÌG8ÛÊ”¡æ1
+|
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8ÜÊ”¡æ1
+a
+java:S1128"DRemove this unused import 'java.util.concurrent.ExecutionException'.(¡£ØÍ8¡É¢æ1
