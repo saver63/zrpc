@@ -17,7 +17,7 @@ public class RegistryTest {
     @Before
     public void init(){
         RegistryConfig registryConfig = new RegistryConfig();
-        registryConfig.setAddress("http://localhost:2379");
+        registryConfig.setAddress("http://localhost:2181");
         registry.init(registryConfig);
     }
 
@@ -26,19 +26,22 @@ public class RegistryTest {
         ServiceMetaInfo serviceMetaInfo = new ServiceMetaInfo();
         serviceMetaInfo.setServiceName("myService");
         serviceMetaInfo.setServiceVersion("1.0");
-        serviceMetaInfo.setServiceAddress("localhost:1235");
+        serviceMetaInfo.setServiceHost("localhost");
+        serviceMetaInfo.setServicePort(1235);
         registry.register(serviceMetaInfo);
 
         serviceMetaInfo = new ServiceMetaInfo();
         serviceMetaInfo.setServiceName("myService");
         serviceMetaInfo.setServiceVersion("1.0");
-        serviceMetaInfo.setServiceAddress("localhost:1234");
+        serviceMetaInfo.setServiceHost("localhost");
+        serviceMetaInfo.setServicePort(1235);
         registry.register(serviceMetaInfo);
 
         serviceMetaInfo = new ServiceMetaInfo();
         serviceMetaInfo.setServiceName("myService");
         serviceMetaInfo.setServiceVersion("2.0");
-        serviceMetaInfo.setServiceAddress("localhost:1234");
+        serviceMetaInfo.setServiceHost("localhost");
+        serviceMetaInfo.setServicePort(1235);
         registry.register(serviceMetaInfo);
     }
 
@@ -48,7 +51,8 @@ public class RegistryTest {
 
         serviceMetaInfo.setServiceName("myService");
         serviceMetaInfo.setServiceVersion("1.0");
-        serviceMetaInfo.setServiceAddress("localhost:1234");
+        serviceMetaInfo.setServiceHost("localhost");
+        serviceMetaInfo.setServicePort(1235);
         registry.unRegister(serviceMetaInfo);
 
     }

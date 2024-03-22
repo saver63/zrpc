@@ -17,6 +17,6 @@ public class EasyProviderExample {
 
         //启动web服务
         HttpServer httpServer = new VertxHttpServer();
-        httpServer.doStart(8080);
+        httpServer.doStart(8081);
     }
 }

@@ -29,9 +29,14 @@ public class ServiceMetaInfo {
 
 
     /**
-     * 服务地址
+     * 主机地址
      */
-    private String serviceAddress;
+    private String serviceHost;
+
+    /**
+     * 端口号
+     */
+    private Integer servicePort;
 
 
 
@@ -53,7 +58,7 @@ public class ServiceMetaInfo {
      * @return
      */
     public String getServiceNodeKey(){
-        return String.format("%s/%s", getServiceKey(),serviceAddress);
+        return String.format("%s/%s:%s", getServiceKey(),serviceHost,servicePort);
     }
 
 

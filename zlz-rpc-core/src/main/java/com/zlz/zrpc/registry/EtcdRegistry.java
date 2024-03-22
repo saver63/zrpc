@@ -1,6 +1,7 @@
 package com.zlz.zrpc.registry;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.collection.ConcurrentHashSet;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
 import cn.hutool.json.JSONUtil;
@@ -9,13 +10,13 @@ import com.zlz.zrpc.model.ServiceMetaInfo;
 import io.etcd.jetcd.*;
 import io.etcd.jetcd.options.GetOption;
 import io.etcd.jetcd.options.PutOption;
+import io.etcd.jetcd.watch.WatchEvent;
 
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 
@@ -25,6 +26,15 @@ public class EtcdRegistry implements Registry{
 
     private KV kvClient;
 
+    /**
+     * 注册中心服务缓存
+     */
+    private final RegistryServiceCache registryServiceCache = new RegistryServiceCache();
+
+    /**
+     * 正在监听的 key 集合
+     */
+    private final Set<String> wachingKeySet = new ConcurrentHashSet<>();
 
     /**
      * 本机注册的节点key合集
@@ -96,6 +106,13 @@ public class EtcdRegistry implements Registry{
      */
     @Override
     public List<ServiceMetaInfo> serviceDiscovery(String serviceKey) {
+
+        //优先从缓存获取服务
+        List<ServiceMetaInfo> cachedServiceMetaInfoList = registryServiceCache.readCache();
+        if (cachedServiceMetaInfoList !=null){
+            return cachedServiceMetaInfoList;
+        }
+
         // 前缀搜索,结尾一定要加 '/'
         String searchPrefix = ETCD_ROOT_PATH + serviceKey +"/";
 
@@ -108,10 +125,17 @@ public class EtcdRegistry implements Registry{
                     .getKvs();
 
             //解析服务信息
-            return keyValues.stream().map(keyValue -> {
-               String value =  keyValue.getValue().toString(StandardCharsets.UTF_8);
-               return JSONUtil.toBean(value, ServiceMetaInfo.class);
+            List<ServiceMetaInfo> serviceMetaInfoList = keyValues.stream().map(keyValue -> {
+                String key = keyValue.getKey().toString(StandardCharsets.UTF_8);
+                //监听key的变化
+                watch(key);
+                String value = keyValue.getValue().toString(StandardCharsets.UTF_8);
+                return JSONUtil.toBean(value, ServiceMetaInfo.class);
             }).collect(Collectors.toList());
+
+            //写入服务缓存
+            registryServiceCache.writeCache(serviceMetaInfoList);
+            return serviceMetaInfoList;
         } catch (Exception e) {
             throw new RuntimeException("获取服务列表失败",e);
         }
@@ -124,6 +148,15 @@ public class EtcdRegistry implements Registry{
     @Override
     public void destroy() {
         System.out.println("当前结点下线");
+        //遍历本节点所有的key
+        for (String key : localRegisterNodeKeySet){
+            try {
+                kvClient.delete(ByteSequence.from(key,StandardCharsets.UTF_8)).get();
+            } catch (Exception e) {
+                throw new RuntimeException(key+ "节点下线失败");
+            }
+        }
+
         //释放资源
         if (kvClient != null){
             kvClient.close();
@@ -131,6 +164,7 @@ public class EtcdRegistry implements Registry{
         if (client != null){
             client.close();
         }
+
     }
 
     @Override
@@ -163,5 +197,33 @@ public class EtcdRegistry implements Registry{
         //支持秒级别定时任务
         CronUtil.setMatchSecond(true);
         CronUtil.start();
+    }
+
+    /**
+     * 监听(消费端)
+     *
+     * @param serviceNodeKey
+     */
+    @Override
+    public void watch(String serviceNodeKey) {
+        Watch watchClient = client.getWatchClient();
+        //之前未被监听，开启监听
+        boolean newWatch = wachingKeySet.add(serviceNodeKey);
+        if (newWatch){
+            watchClient.watch(ByteSequence.from(serviceNodeKey,StandardCharsets.UTF_8),respone ->{
+                for (WatchEvent event : respone.getEvents()){
+                    switch (event.getEventType()){
+                        //key 删除时触发
+                        case DELETE:
+                            //清除注册服务缓存
+                            registryServiceCache.clearCache();
+                            break;
+                        case PUT:
+                        default:
+                            break;
+                    }
+                }
+            });
+        }
     }
 }

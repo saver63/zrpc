@@ -20,5 +20,6 @@
         <module name="example-consumer" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="8" />
   </component>
 </project>

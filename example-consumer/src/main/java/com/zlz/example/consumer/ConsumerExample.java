@@ -23,9 +23,6 @@ public class ConsumerExample {
         }else {
             System.out.println("user == null");
         }
-
-
-
         String userName = userService.getName();
         System.out.println(userName);
 
