@@ -20,6 +20,8 @@
         <module name="example-consumer" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="example-prvider2" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

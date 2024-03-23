@@ -1,6 +1,7 @@
 package com.zlz.zrpc.config;
 
 import cn.hutool.core.util.StrUtil;
+import com.zlz.zrpc.loadbalancer.LoadBalancerKeys;
 import com.zlz.zrpc.registry.EtcdRegistry;
 import com.zlz.zrpc.serializer.SerializerKeys;
 import lombok.Data;
@@ -42,5 +43,10 @@ public class RpcConfig {
      * 注册配置
      */
     private RegistryConfig registryConfig = new RegistryConfig() ;
+
+    /**
+     * 负载均衡器
+     */
+    private String loadBalancer = LoadBalancerKeys.ROUND_ROBIN;
 
 }

@@ -1,7 +1,7 @@
 package com.zlz.zrpc.model;
 
+
 import cn.hutool.core.util.StrUtil;
-import com.zlz.zrpc.config.RpcConfig;
 import com.zlz.zrpc.constant.RpcConstant;
 import lombok.Data;
 
@@ -31,7 +31,7 @@ public class ServiceMetaInfo {
     /**
      * 主机地址
      */
-    private String serviceHost;
+    private String serviceHost ;
 
     /**
      * 端口号
@@ -61,5 +61,16 @@ public class ServiceMetaInfo {
         return String.format("%s/%s:%s", getServiceKey(),serviceHost,servicePort);
     }
 
+    /**
+     * 获取完整服务地址
+     *
+     * @return
+     */
+    public String getServiceAddress(){
+        if (!StrUtil.contains(serviceHost,"http")){
+            return String.format("http:%s:%s",serviceHost,servicePort);
+        }
+        return String.format("%s:%s", serviceHost,servicePort);
+    }
 
 }

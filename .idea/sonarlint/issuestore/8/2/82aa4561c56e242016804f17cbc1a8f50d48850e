@@ -1,6 +1,4 @@
 
-W	java:S1253"<This block of commented-out lines of code should be removed.(”ƒºZ8ÊšúŸæ1
-U
-java:S1128"8Remove this unused import 'cn.hutool.core.util.StrUtil'.(ƒËôø8Ø›û¦æ1
-\
-java:S1128":Remove this unused import 'com.zlz.zrpc.config.RpcConfig'.(Õ¹œıÿÿÿÿ8Ø›û¦æ1
+W	java:S1253"<This block of commented-out lines of code should be removed.(”ƒºZ8Âô‹Şæ1
+o
+java:S3252F"MUse static access with "cn.hutool.core.text.CharSequenceUtil" for "contains".(‡Şûüÿÿÿÿ8Äô‹Şæ1
