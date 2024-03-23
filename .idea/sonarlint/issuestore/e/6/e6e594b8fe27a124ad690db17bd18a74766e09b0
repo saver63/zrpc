@@ -1,0 +1,8 @@
+
+O
+java:S1172"2Remove this unused method parameter "requestData".(¯—ûù8¿¹¡Îæ1
+L	java:S1060"+Replace this use of System.out by a logger.(ƒëîÜøÿÿÿÿ8Â¹¡Îæ1
+G	java:S106A"+Replace this use of System.out by a logger.(ØõÒÏ8Ã¹¡Îæ1
+G	java:S106C"+Replace this use of System.err by a logger.(£û 8Ã¹¡Îæ1
+O
+java:S1144"2Remove this unused private "handleRequest" method.(¯—ûù8Ã¹¡Îæ1

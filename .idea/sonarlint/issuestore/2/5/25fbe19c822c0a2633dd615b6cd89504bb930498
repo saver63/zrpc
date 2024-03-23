@@ -1,2 +1,9 @@
 
-g	java:S112="FDefine and throw a dedicated exception instead of using a generic one.(ÒÀ•ˆüÿÿÿÿ8£èş¦æ1
+g	java:S1128"FDefine and throw a dedicated exception instead of using a generic one.(ÒÀ•ˆüÿÿÿÿ8¿‘¥Ğæ1
+b	java:S112@"FDefine and throw a dedicated exception instead of using a generic one.(¿çñŒ8¿‘¥Ğæ1
+`
+java:S1854#">Remove this useless assignment to local variable "serializer".(Ô‹îışÿÿÿÿ8Ã‘¥Ğæ1
+Q
+java:S1481#"/Remove this unused "serializer" local variable.(Ô‹îışÿÿÿÿ8Ã‘¥Ğæ1
+{
+java:S2142?"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8àŸ€Úæ1

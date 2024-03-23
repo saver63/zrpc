@@ -1,8 +1,6 @@
 package com.zlz.zrpc.proxy;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.http.HttpRequest;
-import cn.hutool.http.HttpResponse;
 import com.zlz.zrpc.RpcApplication;
 import com.zlz.zrpc.config.RpcConfig;
 import com.zlz.zrpc.constant.RpcConstant;
@@ -13,8 +11,8 @@ import com.zlz.zrpc.registry.Registry;
 import com.zlz.zrpc.registry.RegistryFactory;
 import com.zlz.zrpc.serializer.Serializer;
 import com.zlz.zrpc.serializer.SerializerFactory;
+import com.zlz.zrpc.server.tcp.VertxTcpClient;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -47,9 +45,6 @@ public class ServiceProxy implements InvocationHandler {
 
         try {
 
-
-            //序列化
-            byte[] bodyBytes = serializer.serialize(rpcRequest);
             //从注册中心获取服务提供者请求地址
             RpcConfig rpcConfig = RpcApplication.getRpcConfig();
             Registry registry = RegistryFactory.getInstance(rpcConfig.getRegistryConfig().getRegistry());
@@ -62,19 +57,11 @@ public class ServiceProxy implements InvocationHandler {
             }
             //暂时先取第一个
             ServiceMetaInfo selectedServiceMetaInfo = serviceMetaInfoList.get(0);
-            //发送请求
-            try (HttpResponse httpResponse = HttpRequest.post(selectedServiceMetaInfo.getServiceHost()+":"+selectedServiceMetaInfo.getServicePort())
-                    .body(bodyBytes)
-                    .execute()) {
-                byte[] result = httpResponse.bodyBytes();
-                //反序列化
-                RpcResponse rpcResponse = serializer.deserialize(result, RpcResponse.class);
-                return rpcResponse.getData();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+            //发送TCP请求
+            RpcResponse rpcResponse = VertxTcpClient.doRequest(rpcRequest,selectedServiceMetaInfo);
+            return rpcResponse.getData();
+        } catch (Exception e) {
+            throw new RuntimeException("调用失败");
         }
-
-        return null;
     }
 }

@@ -1,0 +1,5 @@
+
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(é±Ê›þÿÿÿÿ8ßá¥Ãæ1
+|	java:S116"`Rename this field "MESSAGE_HEADER_LENGTH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸÀÐ’8àá¥Ãæ1
+u	java:S116"YRename this field "PROTOCOL_MAGIC" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íÍ¼…8àá¥Ãæ1
+w	java:S116"[Rename this field "PROTOCOL_VERSION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ð‰¢©8àá¥Ãæ1

@@ -1,0 +1,8 @@
+
+b	java:S1127"FDefine and throw a dedicated exception instead of using a generic one.(ªø°8êç†Ğæ1
+g	java:S112?"FDefine and throw a dedicated exception instead of using a generic one.(ƒŸ«øÿÿÿÿ8Å€Úæ1
+\
+java:S1118":Add a private constructor to hide the implicit public one.(‹çúÿÿÿÿ8ïç†Ğæ1
+L	java:S106!"+Replace this use of System.out by a logger.(ÆÛøúÿÿÿÿ8ñç†Ğæ1
+M
+java:S1481""+Remove this unused "socket" local variable.(ãîœ¼øÿÿÿÿ8òç†Ğæ1

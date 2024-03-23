@@ -11,6 +11,7 @@ import com.zlz.zrpc.registry.Registry;
 import com.zlz.zrpc.registry.RegistryFactory;
 import com.zlz.zrpc.server.HttpServer;
 import com.zlz.zrpc.server.VertxHttpServer;
+import com.zlz.zrpc.server.tcp.VertxTcpServer;
 
 /**
  * 服务提供者示例
@@ -43,7 +44,7 @@ public class ProviderExample {
 
 
         //启动web服务
-        HttpServer httpServer = new VertxHttpServer();
-        httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
+        VertxTcpServer vertxTcpServer = new VertxTcpServer();
+        vertxTcpServer.doStart(8080);
     }
 }
