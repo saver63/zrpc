@@ -157,3 +157,17 @@ z
 Jzlz-rpc-core/src/main/java/com/zlz/zrpc/fault/retry/RetryStrategyKeys.java,b\2\b28a168b7c4784e527b45be1cbed2bba8456fb42
 }
 Mzlz-rpc-core/src/main/java/com/zlz/zrpc/fault/retry/RetryStrategyFactory.java,5\0\50c6705a964d82f14cd72a865ee185394514cced
+|
+Lzlz-rpc-core/src/main/java/com/zlz/zrpc/fault/tolerant/TolerantStrategy.java,1\e\1e55a009208abb90b0adafe43ce36027b96a78d9
+„
+Tzlz-rpc-core/src/main/java/com/zlz/zrpc/fault/tolerant/FailFastTolerantStrategy.java,2\e\2e5e7c469b4e3586a714a482bd4343c99e7da20f
+„
+Tzlz-rpc-core/src/main/java/com/zlz/zrpc/fault/tolerant/FailSafeTolerantStrategy.java,7\b\7b4ed95fe48c9fdac9ebec12b2863b323e89c1b7
+„
+Tzlz-rpc-core/src/main/java/com/zlz/zrpc/fault/tolerant/FailBackTolerantStrategy.java,8\3\8305b65416eebba612453629aabfac7c463c3473
+„
+Tzlz-rpc-core/src/main/java/com/zlz/zrpc/fault/tolerant/FailOverTolerantStrategy.java,7\5\75eca55d04afb3f48ee4698ddfda0f019ae4af5a
+€
+Pzlz-rpc-core/src/main/java/com/zlz/zrpc/fault/tolerant/TolerantStrategyKeys.java,5\d\5dc4f012bb4cce8585921ce015a313f5a4b43af6
+ƒ
+Szlz-rpc-core/src/main/java/com/zlz/zrpc/fault/tolerant/TolerantStrategyFactory.java,f\5\f54167fe9c16672458740e8d1083e6614d70ae9e

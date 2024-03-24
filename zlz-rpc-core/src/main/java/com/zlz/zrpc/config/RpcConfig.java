@@ -2,6 +2,8 @@ package com.zlz.zrpc.config;
 
 import cn.hutool.core.util.StrUtil;
 import com.zlz.zrpc.fault.retry.RetryStrategyKeys;
+import com.zlz.zrpc.fault.tolerant.TolerantStrategy;
+import com.zlz.zrpc.fault.tolerant.TolerantStrategyKeys;
 import com.zlz.zrpc.loadbalancer.LoadBalancerKeys;
 import com.zlz.zrpc.registry.EtcdRegistry;
 import com.zlz.zrpc.serializer.SerializerKeys;
@@ -54,5 +56,10 @@ public class RpcConfig {
      * 重试策略
      */
     private String retryStrategy = RetryStrategyKeys.NO;
+
+    /**
+     * 容错策略
+     */
+    private String tolerantStrategy = TolerantStrategyKeys.FAIL_FAST;
 
 }

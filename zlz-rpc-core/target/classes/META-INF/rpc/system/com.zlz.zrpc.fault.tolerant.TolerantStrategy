@@ -1,0 +1,4 @@
+failBack=com.zlz.zrpc.fault.tolerant.FailBackTolerantStrategy
+failFast=com.zlz.zrpc.fault.tolerant.FailFastTolerantStrategy
+failOver=com.zlz.zrpc.fault.tolerant.FailOverTolerantStrategy
+failSafe=com.zlz.zrpc.fault.tolerant.FailSafeTolerantStrategy
