@@ -1,6 +1,7 @@
 package com.zlz.zrpc.config;
 
 import cn.hutool.core.util.StrUtil;
+import com.zlz.zrpc.fault.retry.RetryStrategyKeys;
 import com.zlz.zrpc.loadbalancer.LoadBalancerKeys;
 import com.zlz.zrpc.registry.EtcdRegistry;
 import com.zlz.zrpc.serializer.SerializerKeys;
@@ -48,5 +49,10 @@ public class RpcConfig {
      * 负载均衡器
      */
     private String loadBalancer = LoadBalancerKeys.ROUND_ROBIN;
+
+    /**
+     * 重试策略
+     */
+    private String retryStrategy = RetryStrategyKeys.NO;
 
 }

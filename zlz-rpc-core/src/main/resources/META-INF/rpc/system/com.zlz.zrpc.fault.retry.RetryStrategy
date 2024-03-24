@@ -1,0 +1,2 @@
+no=com.zlz.zrpc.fault.retry.NoRetryStrategy
+fixedInterval=com.zlz.zrpc.fault.retry.NoRetryStrategy
