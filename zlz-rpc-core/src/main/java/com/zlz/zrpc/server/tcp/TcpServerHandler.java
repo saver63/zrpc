@@ -1,12 +1,10 @@
 package com.zlz.zrpc.server.tcp;
 
 
+import com.google.protobuf.ProtocolMessageEnum;
 import com.zlz.zrpc.model.RpcRequest;
 import com.zlz.zrpc.model.RpcResponse;
-import com.zlz.zrpc.protocol.ProtocolMessage;
-import com.zlz.zrpc.protocol.ProtocolMessageDecoder;
-import com.zlz.zrpc.protocol.ProtocolMessageEncoder;
-import com.zlz.zrpc.protocol.ProtocolMessageTypeEnum;
+import com.zlz.zrpc.protocol.*;
 import com.zlz.zrpc.registry.LocalRegistry;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
@@ -29,9 +27,43 @@ public class TcpServerHandler implements Handler<NetSocket> {
     @Override
     public void handle(NetSocket socket) {
         TcpBufferHandlerWrapper bufferHandlerWrapper = new TcpBufferHandlerWrapper(buffer -> {
-            //处理请求代码
+            //接受请求，解码
+            ProtocolMessage<RpcRequest> protocolMessage;
+            try {
+                protocolMessage = (ProtocolMessage<RpcRequest>) ProtocolMessageDecoder.decode(buffer);
+            } catch (IOException e) {
+                throw new RuntimeException("协议消息解码错误");
+            }
+
+            RpcRequest rpcRequest = protocolMessage.getBody();
+            ProtocolMessage.Header header = protocolMessage.getHeader();
+
+            //处理请求
+            //构造响应结果对象
+            RpcResponse rpcResponse = new RpcResponse();
+            try {
+                //获取要调用的服务实现类，通过反射调用
+                Class<?> implClass = LocalRegistry.get(rpcRequest.getServiceName());
+                Method method = implClass.getMethod(rpcRequest.getMethodName(),rpcRequest.getParameterTypes());
+                Object result = method.invoke(implClass.newInstance(),rpcRequest.getArgs());
+                //封装返回结果
+                rpcResponse.setData(result);
+            } catch (Exception e) {
+                e.printStackTrace();
+                rpcResponse.setMessage(e.getMessage());
+                rpcResponse.setException(e);
+            }
+            //发送响应，编码
+            header.setType((byte)ProtocolMessageTypeEnum.RESPONSE.getKey());
+            header.setStatus((byte) ProtocolMessageStatusEnum.OK.getValue());
+            ProtocolMessage<RpcResponse> responseProtocolMessage = new ProtocolMessage<>(header,rpcResponse);
+            try {
+                Buffer encode = ProtocolMessageEncoder.encode(responseProtocolMessage);
+                socket.write(encode);
+            } catch (IOException e) {
+                throw new RuntimeException("协议编码错误");
+            }
         });
         socket.handler(bufferHandlerWrapper);
-
     }
 }

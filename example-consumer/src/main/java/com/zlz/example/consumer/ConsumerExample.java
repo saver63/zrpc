@@ -2,6 +2,7 @@ package com.zlz.example.consumer;
 
 import com.zlz.example.common.model.User;
 import com.zlz.example.common.service.UserService;
+import com.zlz.zrpc.bootStrap.ConsumerBootstrap;
 import com.zlz.zrpc.proxy.ServiceProxyFactory;
 
 /**
@@ -10,6 +11,8 @@ import com.zlz.zrpc.proxy.ServiceProxyFactory;
 public class ConsumerExample {
 
     public static void main(String[] args) {
+        //服务提供者初始化
+        ConsumerBootstrap.init();
 
         //获取代理
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
@@ -23,8 +26,5 @@ public class ConsumerExample {
         }else {
             System.out.println("user == null");
         }
-        String userName = userService.getName();
-        System.out.println(userName);
-
     }
 }

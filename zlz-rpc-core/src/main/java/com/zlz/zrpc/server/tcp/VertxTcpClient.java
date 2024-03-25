@@ -21,6 +21,15 @@ import java.util.concurrent.ExecutionException;
  */
 public class VertxTcpClient {
 
+    /**
+     * 发送请求
+     *
+     * @param rpcRequest
+     * @param serviceMetaInfo
+     * @return
+     * @throws InterruptedException
+     * @throws ExecutionException
+     */
     public static RpcResponse doRequest(RpcRequest rpcRequest, ServiceMetaInfo serviceMetaInfo) throws InterruptedException, ExecutionException {
         //发送TCP请求
         //创建Vert.x实例
@@ -30,8 +39,8 @@ public class VertxTcpClient {
         netClient.connect(serviceMetaInfo.getServicePort(),serviceMetaInfo.getServiceHost(),
                 result->{
                     if (!result.succeeded()) {
-                        System.out.println("Connected to TCP server");
-                        io.vertx.core.net.NetSocket socket = result.result();
+                        System.err.println("Failed to Connected to TCP server");
+                        return;
                     }
                     NetSocket socket = result.result();
                     //发送数据

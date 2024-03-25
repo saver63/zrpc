@@ -19,7 +19,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
+/**
+ * Etcd注册中心
+ */
 public class EtcdRegistry implements Registry{
 
     private Client client;
@@ -56,6 +58,7 @@ public class EtcdRegistry implements Registry{
     public void init(RegistryConfig registryConfig) {
         client = Client.builder().endpoints(registryConfig.getAddress()).connectTimeout(Duration.ofMillis(registryConfig.getTimeout())).build();
         kvClient = client.getKVClient();
+        heartBeat();
     }
 
     /**
@@ -109,7 +112,7 @@ public class EtcdRegistry implements Registry{
 
         //优先从缓存获取服务
         List<ServiceMetaInfo> cachedServiceMetaInfoList = registryServiceCache.readCache();
-        if (cachedServiceMetaInfoList !=null){
+        if (cachedServiceMetaInfoList != null){
             return cachedServiceMetaInfoList;
         }
 
@@ -170,7 +173,7 @@ public class EtcdRegistry implements Registry{
     @Override
     public void heartBeat() {
         //10秒续签一次
-        CronUtil.schedule("*/10*****", new Task() {
+        CronUtil.schedule("*/10 * * * * *", new Task() {
             @Override
             public void execute() {
                 //遍历本节点所有的key

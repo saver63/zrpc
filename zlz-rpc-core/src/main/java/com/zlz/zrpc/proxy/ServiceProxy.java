@@ -1,6 +1,8 @@
 package com.zlz.zrpc.proxy;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.http.HttpRequest;
+import cn.hutool.http.HttpResponse;
 import com.zlz.zrpc.RpcApplication;
 import com.zlz.zrpc.config.RpcConfig;
 import com.zlz.zrpc.constant.RpcConstant;
@@ -19,6 +21,8 @@ import com.zlz.zrpc.serializer.Serializer;
 import com.zlz.zrpc.serializer.SerializerFactory;
 import com.zlz.zrpc.server.tcp.VertxTcpClient;
 
+
+import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -40,9 +44,6 @@ public class ServiceProxy implements InvocationHandler {
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-
-        //指定序列化器
-        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         //构造请求
         String serviceName = method.getDeclaringClass().getName();
@@ -71,11 +72,12 @@ public class ServiceProxy implements InvocationHandler {
         requestParams.put("methodName",rpcRequest.getMethodName());
         ServiceMetaInfo selectedServiceMetaInfo = loadBalancer.select(requestParams, serviceMetaInfoList);
 
+        //rpc请求
+        //使用重试机制
         RpcResponse rpcResponse;
         try {
 
-            //rpc请求
-            //使用重试机制
+
             RetryStrategy retryStrategy = RetryStrategyFactory.getInstance(rpcConfig.getRetryStrategy());
             rpcResponse = retryStrategy.doRetry(()-> VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo));
 
@@ -85,5 +87,18 @@ public class ServiceProxy implements InvocationHandler {
             rpcResponse = tolerantStrategy.doTolerant(null,e);
         }
         return rpcResponse.getData();
+    }
+
+    private static RpcResponse doHttpRequest(ServiceMetaInfo selectedServiceMetaInfo, byte[] bodyBytes) throws IOException{
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
+        //发送HTTP请求
+        try (
+            HttpResponse httpResponse = HttpRequest.post(selectedServiceMetaInfo.getServiceAddress()).body(bodyBytes).execute()
+        ){
+            byte[] result = httpResponse.bodyBytes();
+            //反序列化
+            RpcResponse rpcResponse = serializer.deserialize(result, RpcResponse.class);
+            return rpcResponse;
+        }
     }
 }

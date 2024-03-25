@@ -37,7 +37,7 @@ public class ProtocolMessageDecoder {
         header.setRequestId(buffer.getLong(5));
         header.setBodyLength(buffer.getInt(13));
         //解决粘包问题，只读取指定长度的数据
-        byte[] bodyBytes = buffer.getBytes(ProtocolConstant.MESSAGE_HEADER_LENGTH,ProtocolConstant.MESSAGE_HEADER_LENGTH + header.getBodyLength());
+        byte[] bodyBytes = buffer.getBytes(17,17 + header.getBodyLength());
         //解析消息体
         ProtocolMessageSerializerEnum serializerEnum = ProtocolMessageSerializerEnum.getEnumByKey(header.getSerializer());
         if (serializerEnum == null){

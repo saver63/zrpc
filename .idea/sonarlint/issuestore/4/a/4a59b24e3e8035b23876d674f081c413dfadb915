@@ -1,0 +1,7 @@
+
+g	java:S112#"FDefine and throw a dedicated exception instead of using a generic one.(ƒŸ«øÿÿÿÿ8¾Íšç1
+b	java:S112@"FDefine and throw a dedicated exception instead of using a generic one.(ŞÆ“8ÂÒÍšç1
+P
+java:S18740"3Remove this use of "newInstance"; it is deprecated.(¨òÏ¶8™¾Íšç1
+f
+java:S1128"DRemove this unused import 'com.google.protobuf.ProtocolMessageEnum'.(ñ¬Ë¼úÿÿÿÿ8š¾Íšç1

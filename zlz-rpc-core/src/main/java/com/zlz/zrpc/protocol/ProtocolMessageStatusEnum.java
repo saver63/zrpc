@@ -10,7 +10,7 @@ import lombok.Getter;
 public enum ProtocolMessageStatusEnum {
 
     OK("ok",20),
-    BAD_PEQUEST("badRequest",40),
+    BAD_REQUEST("badRequest",40),
     BAD_RESPONSE("badResponse",50);
 
     private final String text;

@@ -7,7 +7,6 @@ import com.zlz.zrpc.registry.Registry;
 import com.zlz.zrpc.registry.RegistryFactory;
 import com.zlz.zrpc.utils.ConfigUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.omg.SendingContext.RunTime;
 
 /**
  * RPC框架应用

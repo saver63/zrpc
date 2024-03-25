@@ -1,6 +1,6 @@
 
-g	java:S112A"FDefine and throw a dedicated exception instead of using a generic one.(ÒÀ•ˆüÿÿÿÿ8Êãªñæ1
-`
-java:S1854-">Remove this useless assignment to local variable "serializer".(Ô‹îışÿÿÿÿ8Ğãªñæ1
-Q
-java:S1481-"/Remove this unused "serializer" local variable.(Ô‹îışÿÿÿÿ8Òãªñæ1
+g	java:S112B"FDefine and throw a dedicated exception instead of using a generic one.(ÒÀ•ˆüÿÿÿÿ8Æ´Œç1
+…
+java:S1488d"cImmediately return this expression instead of assigning it to the temporary variable "rpcResponse".(âÂÄ¤úÿÿÿÿ8Ç´Œç1
+O
+java:S1144\"2Remove this unused private "doHttpRequest" method.(ñ‘öÚ8à´Œç1

@@ -1,8 +1,28 @@
 
-g	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8×‚Ëµæ1
+L
+java:S3740"/Provide the parametrized type for this generic.(­¡·Î8Á¸µ‰ç1
+L
+java:S3740"/Provide the parametrized type for this generic.(­¡·Î8Â¸µ‰ç1
+U
+java:S1128"8Remove this unused import 'com.zlz.zrpc.RpcApplication'.(¶»åö8Ê¸µ‰ç1
+a
+java:S1128"?Remove this unused import 'com.zlz.zrpc.config.RegistryConfig'.(ºÜÆØıÿÿÿÿ8Ê¸µ‰ç1
+\
+java:S1128":Remove this unused import 'com.zlz.zrpc.config.RpcConfig'.(Õ¹œıÿÿÿÿ8Ê¸µ‰ç1
 `
-java:S1128">Remove this unused import 'com.zlz.zrpc.constant.RpcConstant'.(Âùşõùÿÿÿÿ8ñÉğÉæ1
-]
-java:S1128";Remove this unused import 'com.zlz.zrpc.server.HttpServer'.(»¯¿³ÿÿÿÿÿ8òÉğÉæ1
+java:S1128	">Remove this unused import 'com.zlz.zrpc.constant.RpcConstant'.(Âùşõùÿÿÿÿ8Ê¸µ‰ç1
+[
+java:S1128
+"?Remove this unused import 'com.zlz.zrpc.model.ServiceMetaInfo'.(¾Õşq8Ê¸µ‰ç1
 b
-java:S1128"@Remove this unused import 'com.zlz.zrpc.server.VertxHttpServer'.(²Ãşÿÿÿÿ8òÉğÉæ1
+java:S1128"@Remove this unused import 'com.zlz.zrpc.registry.LocalRegistry'.(¯¶÷´ùÿÿÿÿ8Ê¸µ‰ç1
+X
+java:S1128";Remove this unused import 'com.zlz.zrpc.registry.Registry'.(€¸Ôï8Ê¸µ‰ç1
+d
+java:S1128"BRemove this unused import 'com.zlz.zrpc.registry.RegistryFactory'.(»—Ûøÿÿÿÿ8Ê¸µ‰ç1
+]
+java:S1128";Remove this unused import 'com.zlz.zrpc.server.HttpServer'.(»¯¿³ÿÿÿÿÿ8Ê¸µ‰ç1
+b
+java:S1128"@Remove this unused import 'com.zlz.zrpc.server.VertxHttpServer'.(²Ãşÿÿÿÿ8Ë¸µ‰ç1
+e
+java:S1128"CRemove this unused import 'com.zlz.zrpc.server.tcp.VertxTcpServer'.(£ÑÓÙıÿÿÿÿ8Ë¸µ‰ç1
